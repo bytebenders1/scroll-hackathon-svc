@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { EthereumProvider } from "@/src/libs/type";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,7 +36,36 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 text-white">
+          <nav className="bg-white/10 backdrop-blur-lg p-4">
+            <div className="max-w-4xl mx-auto flex justify-between items-center">
+              <Link
+                href="/"
+                className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500"
+              >
+                ChainQuest
+              </Link>
+              <div className="space-x-4">
+                <Link
+                  href="/add-puzzle"
+                  className="hover:text-yellow-400 transition duration-300"
+                >
+                  Add Puzzle
+                </Link>
+                <Link
+                  href="/solve-puzzle"
+                  className="hover:text-yellow-400 transition duration-300"
+                >
+                  Solve Puzzle
+                </Link>
+                <button>Connect Wallet</button>
+              </div>
+            </div>
+          </nav>
+          <main className="p-8">
+            <div className="max-w-4xl mx-auto">{children}</div>
+          </main>
+        </div>
       </body>
     </html>
   );

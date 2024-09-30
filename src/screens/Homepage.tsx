@@ -104,66 +104,92 @@ const Homepage = () => {
   };
 
   return (
-    <div className="w-screen h-screen p-10">
-      <h1 className="text-4xl font-bold">ChainQuest</h1>
-      <div className="w-full">
-        <h2>Add Puzzle</h2>
-        <div className="space-x-2">
-          <input
-            type="number"
-            value={puzzleId}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPuzzleId(parseInt(e.target.value))
-            }
-            placeholder="Puzzle ID"
-          />
-          <input
-            type="text"
-            value={puzzle}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPuzzle(e.target.value)
-            }
-            placeholder="Puzzle"
-          />
-          <input
-            type="text"
-            value={solution}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSolution(e.target.value)
-            }
-            placeholder="Solution"
-          />
+    <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 text-white p-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-6xl font-extrabold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
+          ChainQuest
+        </h1>
+
+        <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-8 shadow-lg">
+          <h2 className="text-3xl font-bold mb-6">Add New Puzzle</h2>
+          <div className="space-y-4">
+            <input
+              type="number"
+              value={puzzleId}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPuzzleId(parseInt(e.target.value))
+              }
+              placeholder="Puzzle ID"
+              className="w-full px-4 py-2 bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+            <input
+              type="text"
+              value={puzzle}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPuzzle(e.target.value)
+              }
+              placeholder="Puzzle"
+              className="w-full px-4 py-2 bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+            <input
+              type="text"
+              value={solution}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSolution(e.target.value)
+              }
+              placeholder="Solution"
+              className="w-full px-4 py-2 bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
+          <button
+            onClick={addPuzzle}
+            className="mt-6 w-full bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition duration-300"
+          >
+            Add Puzzle
+          </button>
         </div>
-        <button onClick={addPuzzle}>Add Puzzle</button>
+
+        <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-8 shadow-lg">
+          <h2 className="text-3xl font-bold mb-6">Solve Puzzle</h2>
+          <div className="space-y-4">
+            <input
+              type="number"
+              value={puzzleId}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPuzzleId(parseInt(e.target.value))
+              }
+              placeholder="Puzzle ID"
+              className="w-full px-4 py-2 bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+            <input
+              type="text"
+              value={solution}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSolution(e.target.value)
+              }
+              placeholder="Solution"
+              className="w-full px-4 py-2 bg-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
+          <button
+            onClick={solvePuzzle}
+            className="mt-6 w-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition duration-300"
+          >
+            Solve Puzzle
+          </button>
+        </div>
+
+        {nftImage && (
+          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-lg">
+            <h2 className="text-3xl font-bold mb-6">Your NFT</h2>
+            <img
+              src={nftImage}
+              alt="Minted NFT"
+              className="w-full h-auto rounded-lg shadow-md"
+            />
+          </div>
+        )}
       </div>
-      <div className="w-full mt-10">
-        <h2>Solve Puzzle</h2>
-        <div className="flex gap-x-2 w-full">
-          <input
-            type="number"
-            value={puzzleId}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setPuzzleId(parseInt(e.target.value))
-            }
-            placeholder="Puzzle ID"
-          />
-          <input
-            type="text"
-            value={solution}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSolution(e.target.value)
-            }
-            placeholder="Solution"
-          />
-        </div>
-        <button onClick={solvePuzzle}>Solve Puzzle</button>
-      </div>
-      {nftImage && (
-        <div>
-          <h2>Your NFT</h2>
-          <img src={nftImage} alt="Minted NFT" />
-        </div>
-      )}
     </div>
   );
 };

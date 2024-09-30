@@ -10,4 +10,7 @@ input {
   .text-balance {
     text-wrap: balance;
   }
+  input {
+    @apply placeholder:text-white;
+  }
 }
