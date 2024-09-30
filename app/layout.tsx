@@ -58,7 +58,7 @@ export default function RootLayout({
                 >
                   Solve Puzzle
                 </Link>
-                <button>Connect Wallet</button>
+                {/* <button>Connect Wallet</button> */}
               </div>
             </div>
           </nav>
