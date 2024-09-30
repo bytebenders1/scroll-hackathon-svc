@@ -10,6 +10,7 @@ const AddPuzzle = () => {
   const [puzzleId, setPuzzleId] = useState(0);
   const [puzzle, setPuzzle] = useState("");
   const [solution, setSolution] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const loadProviderAndContract = async () => {
@@ -31,14 +32,19 @@ const AddPuzzle = () => {
 
   const addPuzzle = async () => {
     if (!contract) return;
+    setIsLoading(true);
     try {
       const tx = await contract.addPuzzle(puzzleId, puzzle, solution);
       await tx.wait();
       alert("Puzzle added successfully!");
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
+
       alert("Error adding puzzle");
     }
+    setIsLoading(false);
   };
 
   return (
@@ -70,8 +76,9 @@ const AddPuzzle = () => {
       <button
         onClick={addPuzzle}
         className="mt-6 w-full bg-gradient-to-r from-yellow-400 to-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition duration-300"
+        disabled={isLoading}
       >
-        Add Puzzle
+        {isLoading ? "Loading..." : "Add Puzzle"}
       </button>
     </div>
   );
